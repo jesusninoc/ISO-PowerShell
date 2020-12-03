@@ -1,0 +1,24 @@
+# Adrián Medina Gomariz ASIR-1
+### Function de monitorización de la cpu de un proceso
+
+$fecha = (get-date).ToString("ddMMyyyy")
+$psCPU = Read-Host "¿Eliga la cantidad de CPU consumida?"
+
+function monitorizarCPU ([int]$psCPU)
+{
+
+    foreach ($ps in ps)
+    {
+        if ($ps.cpu -gt ([int]$psCPU))
+        {
+            New-Item -Name $fecha -ItemType directory -force
+            
+            foreach ($proceso in (ps | where cpu -GT $psCPU))
+            {
+              New-Item -ItemType file -name $proceso.name -value $proceso.cpu -Path $fecha -Force
+            }
+        }
+    }
+}
+monitorizarCPU $psCPU
+cd ..
