@@ -1,8 +1,9 @@
+```PowerShell
 # Adrián Medina Gomariz ASIR-1
 ### Function de monitorización de la cpu de un proceso
 
 $fecha = (get-date).ToString("ddMMyyyy")
-$psCPU = Read-Host "¿Eliga la cantidad de CPU consumida?"
+$psCPU = Read-Host "¿Elija la cantidad de CPU consumida?"
 
 function monitorizarCPU ([int]$psCPU)
 {
@@ -21,3 +22,4 @@ function monitorizarCPU ([int]$psCPU)
     }
 }
 monitorizarCPU $psCPU
+```
